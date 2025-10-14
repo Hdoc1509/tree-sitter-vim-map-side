@@ -1,4 +1,4 @@
-"""Vim's map side grammar for tree-sitter"""
+"""Vim's map side (lhs and rhs) grammar for tree-sitter"""
 
 from importlib.resources import files as _files
 

@@ -16,7 +16,7 @@
   "metadata": {
     "version": "0.0.0",
     "license": "MIT",
-    "description": "Vim's map side grammar for tree-sitter",
+    "description": "Vim's map side (lhs and rhs) grammar for tree-sitter",
     "authors": [
       {
         "name": "Héctor Ochoa",

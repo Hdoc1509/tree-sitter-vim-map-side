@@ -1,6 +1,6 @@
 [package]
 name = "tree-sitter-vim-map-side"
-description = "Vim's map side grammar for tree-sitter"
+description = "Vim's map side (lhs and rhs) grammar for tree-sitter"
 version = "0.0.0"
 authors = ["Héctor Ochoa <hector.ochoa.dev@gmail.com>"]
 license = "MIT"

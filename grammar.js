@@ -1,5 +1,5 @@
 /**
- * @file Vim's map side grammar for tree-sitter
+ * @file Vim's map side (lhs and rhs) grammar for tree-sitter
  * @author Héctor Ochoa <hector.ochoa.dev@gmail.com>
  * @license MIT
  */

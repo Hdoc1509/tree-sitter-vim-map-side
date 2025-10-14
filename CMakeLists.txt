@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-vim-map-side
         VERSION "0.0.0"
-        DESCRIPTION "Vim's map side grammar for tree-sitter"
+				DESCRIPTION "Vim's map side (lhs and rhs) grammar for tree-sitter"
         HOMEPAGE_URL "https://github.com/hdoc1509/tree-sitter-vim-map-side"
         LANGUAGES C)
 
