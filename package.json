@@ -34,7 +34,8 @@
   "devDependencies": {
     "prebuildify": "6.0.1",
     "tree-sitter": "0.22.4",
-    "tree-sitter-cli": "0.25.9"
+    "tree-sitter-cli": "0.25.9",
+    "wireit": "0.14.12"
   },
   "peerDependencies": {
     "tree-sitter": "^0.22.4"
@@ -45,9 +46,33 @@
     }
   },
   "scripts": {
+    "dev": "npm run _test:watch --watch",
+    "gen": "wireit",
+    "hl": "tree-sitter highlight",
     "install": "node-gyp-build",
+    "parser:release": "bash ./scripts/release-manager.sh",
     "prestart": "tree-sitter build --wasm",
     "start": "tree-sitter playground",
-    "test": "node --test bindings/node/*_test.js"
+    "test": "node --test bindings/node/*_test.js",
+    "test:all": "tree-sitter generate && tree-sitter test",
+    "_test:watch": "wireit"
+  },
+  "wireit": {
+    "gen": {
+      "command": "tree-sitter generate",
+      "files": [
+        "grammar.js"
+      ]
+    },
+    "_test:watch": {
+      "command": "clear && echo 'Running parser tests...' && tree-sitter test",
+      "dependencies": [
+        "gen"
+      ],
+      "files": [
+        "grammar.js",
+        "test/corpus/**/*.test"
+      ]
+    }
   }
 }
