@@ -21,7 +21,7 @@ that `rhs` starts with `:` ([not supported at the moment][ts-vim-map-colon]).
 - [`lua`](https://github.com/tree-sitter-grammars/tree-sitter-lua): injection to
   arguments of `vim.keymap.set()` function for `lhs` and `rhs`
 - [`vim`](https://github.com/tree-sitter-grammars/tree-sitter-vim) (optional):
-  injection to `rhs` when `lhs` starts with `:` and for `command` nodes of this
+  injection to `rhs` when it starts with `:` and to `command` nodes of this
   grammar.
 
 [ci]: https://github.com/Hdoc1509/tree-sitter-vim-map-side/actions/workflows/ci.yml/badge.svg
