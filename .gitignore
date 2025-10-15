@@ -50,3 +50,6 @@ zig-out/
 
 # Wireit stuff
 .wireit
+
+# env
+.env
