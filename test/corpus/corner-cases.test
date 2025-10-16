@@ -1,0 +1,17 @@
+==========
+`<` at end
+==========
+<leader><
+---
+(map_side
+  (keycode)
+  (ERROR))
+
+==========
+`:` at end
+==========
+<key>s:
+---
+(map_side
+  (keycode)
+  (ERROR))
