@@ -5,3 +5,11 @@ keycode
 ---
 (map_side
   (keycode))
+
+=========================
+keycode with ignored keys
+=========================
+<leader>[a
+---
+(map_side
+  (keycode))
