@@ -13,3 +13,13 @@ keycode with ignored keys
 ---
 (map_side
   (keycode))
+
+=========
+<cmd> rhs
+=========
+<cmd>Format<cr>
+---
+(map_side
+  (keycode)
+  (command)
+  (keycode))
