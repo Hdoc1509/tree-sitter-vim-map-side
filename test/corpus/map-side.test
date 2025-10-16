@@ -23,3 +23,14 @@ keycode with ignored keys
   (keycode)
   (command)
   (keycode))
+
+====================
+<cmd> with pipe (\|)
+====================
+<cmd>call CustomFunction() \| OtherCommand<CR>
+---
+(map_side
+  (keycode)
+  (command)
+  (command)
+  (keycode))
