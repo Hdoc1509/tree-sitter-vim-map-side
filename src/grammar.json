@@ -49,7 +49,7 @@
     },
     "_not_keycode": {
       "type": "PATTERN",
-      "value": "[^<:(]+"
+      "value": "[^<:(\"]+"
     },
     "_cmd_rhs": {
       "type": "SEQ",
@@ -295,12 +295,24 @@
     "argument": {
       "type": "PATTERN",
       "value": "[^)]+"
+    },
+    "comment": {
+      "type": "PATTERN",
+      "value": "\".+"
+    },
+    "_blank": {
+      "type": "PATTERN",
+      "value": "\\s+"
     }
   },
   "extras": [
     {
-      "type": "PATTERN",
-      "value": "\\s"
+      "type": "SYMBOL",
+      "name": "comment"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_blank"
     }
   ],
   "conflicts": [],

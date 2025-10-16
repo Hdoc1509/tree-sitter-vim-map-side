@@ -123,6 +123,11 @@
     "named": true
   },
   {
+    "type": "comment",
+    "named": true,
+    "extra": true
+  },
+  {
     "type": "printf",
     "named": false
   },

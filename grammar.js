@@ -10,6 +10,8 @@
 module.exports = grammar({
   name: "vim_map_side",
 
+  extras: ($) => [$.comment, $._blank],
+
   rules: {
     map_side: ($) =>
       repeat1(
@@ -23,7 +25,7 @@ module.exports = grammar({
       ),
 
     keycode: () => seq("<", /[^>]+/, ">"),
-    _not_keycode: () => /[^<:(]+/,
+    _not_keycode: () => /[^<:("]+/,
 
     _cmd_rhs: ($) =>
       seq(
@@ -63,5 +65,10 @@ module.exports = grammar({
     string: ($) => seq("'", $.string_content, "'"),
     string_content: () => /[^']+/,
     argument: () => /[^)]+/,
+
+    // NOTE: just for highlighting tests
+    comment: () => /".+/,
+
+    _blank: () => /\s+/,
   },
 });
