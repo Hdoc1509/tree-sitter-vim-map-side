@@ -1,10 +1,5 @@
 [
   {
-    "type": "command",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "keycode",
     "named": true,
     "fields": {}
@@ -36,5 +31,13 @@
   {
     "type": ">",
     "named": false
+  },
+  {
+    "type": "\\|",
+    "named": false
+  },
+  {
+    "type": "command",
+    "named": true
   }
 ]

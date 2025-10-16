@@ -21,12 +21,14 @@ module.exports = grammar({
         "<",
         alias(choice("cmd", "Cmd", "CMD"), $.keycode),
         ">",
-        $.command,
+        repeat1(choice($.command, $._pipe)),
         "<",
         alias(choice("cr", "CR"), $.keycode),
         ">"
       ),
 
-    command: () => /[^<]+/,
+    command: () => /[^<|\\]+/,
+
+    _pipe: () => "\\|",
   },
 });

@@ -77,8 +77,20 @@
           "value": ">"
         },
         {
-          "type": "SYMBOL",
-          "name": "command"
+          "type": "REPEAT1",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "command"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_pipe"
+              }
+            ]
+          }
         },
         {
           "type": "STRING",
@@ -110,7 +122,11 @@
     },
     "command": {
       "type": "PATTERN",
-      "value": "[^<]+"
+      "value": "[^<|\\\\]+"
+    },
+    "_pipe": {
+      "type": "STRING",
+      "value": "\\|"
     }
   },
   "extras": [
