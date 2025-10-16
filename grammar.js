@@ -11,7 +11,8 @@ module.exports = grammar({
   name: "vim_map_side",
 
   rules: {
-    // TODO: add the actual grammar rules
-    source_file: $ => "hello"
-  }
+    map_side: ($) => $.keycode,
+
+    keycode: () => seq("<", /[^>]+/, ">"),
+  },
 });

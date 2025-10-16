@@ -2,9 +2,26 @@
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "vim_map_side",
   "rules": {
-    "source_file": {
-      "type": "STRING",
-      "value": "hello"
+    "map_side": {
+      "type": "SYMBOL",
+      "name": "keycode"
+    },
+    "keycode": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "<"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^>]+"
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        }
+      ]
     }
   },
   "extras": [
