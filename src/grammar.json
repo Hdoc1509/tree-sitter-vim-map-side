@@ -17,6 +17,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "_colon_rhs"
+          },
+          {
+            "type": "SYMBOL",
             "name": "_not_keycode"
           }
         ]
@@ -41,7 +45,7 @@
     },
     "_not_keycode": {
       "type": "PATTERN",
-      "value": "[^<]+"
+      "value": "[^<:]+"
     },
     "_cmd_rhs": {
       "type": "SEQ",
@@ -117,6 +121,53 @@
         {
           "type": "STRING",
           "value": ">"
+        }
+      ]
+    },
+    "_colon_rhs": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "command"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_pipe"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "<"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "cr"
+              },
+              {
+                "type": "STRING",
+                "value": "CR"
+              }
+            ]
+          },
+          "named": true,
+          "value": "keycode"
         }
       ]
     },

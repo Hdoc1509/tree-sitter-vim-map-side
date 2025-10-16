@@ -11,10 +11,11 @@ module.exports = grammar({
   name: "vim_map_side",
 
   rules: {
-    map_side: ($) => repeat1(choice($.keycode, $._cmd_rhs, $._not_keycode)),
+    map_side: ($) =>
+      repeat1(choice($.keycode, $._cmd_rhs, $._colon_rhs, $._not_keycode)),
 
     keycode: () => seq("<", /[^>]+/, ">"),
-    _not_keycode: () => /[^<]+/,
+    _not_keycode: () => /[^<:]+/,
 
     _cmd_rhs: ($) =>
       seq(
@@ -25,6 +26,14 @@ module.exports = grammar({
         "<",
         alias(choice("cr", "CR"), $.keycode),
         ">"
+      ),
+
+    _colon_rhs: ($) =>
+      seq(
+        ":",
+        repeat1(choice($.command, $._pipe)),
+        "<",
+        alias(choice("cr", "CR"), $.keycode)
       ),
 
     command: () => /[^<|\\]+/,
