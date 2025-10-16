@@ -5,6 +5,21 @@
     "fields": {}
   },
   {
+    "type": "expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "printf",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "keycode",
     "named": true,
     "fields": {}
@@ -23,6 +38,10 @@
           "named": true
         },
         {
+          "type": "expression",
+          "named": true
+        },
+        {
           "type": "keycode",
           "named": true
         }
@@ -30,7 +49,57 @@
     }
   },
   {
+    "type": "printf",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "argument",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "'",
+    "named": false
+  },
+  {
     "type": "'<,'>",
+    "named": false
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": ",",
     "named": false
   },
   {
@@ -48,5 +117,17 @@
   {
     "type": "\\|",
     "named": false
+  },
+  {
+    "type": "argument",
+    "named": true
+  },
+  {
+    "type": "printf",
+    "named": false
+  },
+  {
+    "type": "string_content",
+    "named": true
   }
 ]

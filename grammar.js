@@ -12,10 +12,18 @@ module.exports = grammar({
 
   rules: {
     map_side: ($) =>
-      repeat1(choice($.keycode, $._cmd_rhs, $._colon_rhs, $._not_keycode)),
+      repeat1(
+        choice(
+          $.keycode,
+          $.expression,
+          $._cmd_rhs,
+          $._colon_rhs,
+          $._not_keycode
+        )
+      ),
 
     keycode: () => seq("<", /[^>]+/, ">"),
-    _not_keycode: () => /[^<:]+/,
+    _not_keycode: () => /[^<:(]+/,
 
     _cmd_rhs: ($) =>
       seq(
@@ -41,5 +49,19 @@ module.exports = grammar({
     command: () => /[^<|\\]+/,
 
     _pipe: () => "\\|",
+
+    expression: ($) => $.printf,
+
+    printf: ($) =>
+      seq(
+        "printf",
+        "(",
+        // NOTE: `optional` to allow highlighting while writing code
+        optional(seq($.string, repeat(seq(",", $.argument)))),
+        ")"
+      ),
+    string: ($) => seq("'", $.string_content, "'"),
+    string_content: () => /[^']+/,
+    argument: () => /[^)]+/,
   },
 });

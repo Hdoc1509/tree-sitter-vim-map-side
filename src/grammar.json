@@ -13,6 +13,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "SYMBOL",
             "name": "_cmd_rhs"
           },
           {
@@ -45,7 +49,7 @@
     },
     "_not_keycode": {
       "type": "PATTERN",
-      "value": "[^<:]+"
+      "value": "[^<:(]+"
     },
     "_cmd_rhs": {
       "type": "SEQ",
@@ -212,6 +216,85 @@
     "_pipe": {
       "type": "STRING",
       "value": "\\|"
+    },
+    "expression": {
+      "type": "SYMBOL",
+      "name": "printf"
+    },
+    "printf": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "printf"
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "string"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "argument"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "'"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string_content"
+        },
+        {
+          "type": "STRING",
+          "value": "'"
+        }
+      ]
+    },
+    "string_content": {
+      "type": "PATTERN",
+      "value": "[^']+"
+    },
+    "argument": {
+      "type": "PATTERN",
+      "value": "[^)]+"
     }
   },
   "extras": [
