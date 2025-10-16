@@ -24,3 +24,11 @@
 "                                                        ^ @punctuation.bracket
 "                                                         ^^ @character.special
 "                                                           ^ @punctuation.bracket
+
+" === printf ===
+printf('m`%so<esc>``', v:count1)
+" <- @function.call
+"     ^ @punctuation.bracket
+"      ^^^^^^^^^^^^^^ @string
+"                    ^ @punctuation.delimiter
+"                              ^ @punctuation.bracket
