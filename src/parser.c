@@ -7,11 +7,11 @@
 #endif
 
 #define LANGUAGE_VERSION 15
-#define STATE_COUNT 7
-#define LARGE_STATE_COUNT 2
-#define SYMBOL_COUNT 6
+#define STATE_COUNT 8
+#define LARGE_STATE_COUNT 4
+#define SYMBOL_COUNT 8
 #define ALIAS_COUNT 0
-#define TOKEN_COUNT 4
+#define TOKEN_COUNT 5
 #define EXTERNAL_TOKEN_COUNT 0
 #define FIELD_COUNT 0
 #define MAX_ALIAS_SEQUENCE_LENGTH 3
@@ -23,8 +23,10 @@ enum ts_symbol_identifiers {
   anon_sym_LT = 1,
   aux_sym_keycode_token1 = 2,
   anon_sym_GT = 3,
-  sym_map_side = 4,
-  sym_keycode = 5,
+  sym__not_keycode = 4,
+  sym_map_side = 5,
+  sym_keycode = 6,
+  aux_sym_map_side_repeat1 = 7,
 };
 
 static const char * const ts_symbol_names[] = {
@@ -32,8 +34,10 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_LT] = "<",
   [aux_sym_keycode_token1] = "keycode_token1",
   [anon_sym_GT] = ">",
+  [sym__not_keycode] = "_not_keycode",
   [sym_map_side] = "map_side",
   [sym_keycode] = "keycode",
+  [aux_sym_map_side_repeat1] = "map_side_repeat1",
 };
 
 static const TSSymbol ts_symbol_map[] = {
@@ -41,8 +45,10 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_LT] = anon_sym_LT,
   [aux_sym_keycode_token1] = aux_sym_keycode_token1,
   [anon_sym_GT] = anon_sym_GT,
+  [sym__not_keycode] = sym__not_keycode,
   [sym_map_side] = sym_map_side,
   [sym_keycode] = sym_keycode,
+  [aux_sym_map_side_repeat1] = aux_sym_map_side_repeat1,
 };
 
 static const TSSymbolMetadata ts_symbol_metadata[] = {
@@ -62,6 +68,10 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = false,
   },
+  [sym__not_keycode] = {
+    .visible = false,
+    .named = true,
+  },
   [sym_map_side] = {
     .visible = true,
     .named = true,
@@ -69,6 +79,10 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
   [sym_keycode] = {
     .visible = true,
     .named = true,
+  },
+  [aux_sym_map_side_repeat1] = {
+    .visible = false,
+    .named = false,
   },
 };
 
@@ -88,6 +102,7 @@ static const TSStateId ts_primary_state_ids[STATE_COUNT] = {
   [4] = 4,
   [5] = 5,
   [6] = 6,
+  [7] = 7,
 };
 
 static bool ts_lex(TSLexer *lexer, TSStateId state) {
@@ -95,38 +110,57 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
   eof = lexer->eof(lexer);
   switch (state) {
     case 0:
-      if (eof) ADVANCE(2);
-      if (lookahead == '<') ADVANCE(3);
-      if (lookahead == '>') ADVANCE(6);
+      if (eof) ADVANCE(3);
+      if (lookahead == '<') ADVANCE(4);
+      if (lookahead == '>') ADVANCE(7);
       if (('\t' <= lookahead && lookahead <= '\r') ||
           lookahead == ' ') SKIP(0);
       END_STATE();
     case 1:
       if (('\t' <= lookahead && lookahead <= '\r') ||
-          lookahead == ' ') ADVANCE(4);
+          lookahead == ' ') ADVANCE(5);
       if (lookahead != 0 &&
-          lookahead != '>') ADVANCE(5);
+          lookahead != '>') ADVANCE(6);
       END_STATE();
     case 2:
-      ACCEPT_TOKEN(ts_builtin_sym_end);
+      if (eof) ADVANCE(3);
+      if (lookahead == '<') ADVANCE(4);
+      if (('\t' <= lookahead && lookahead <= '\r') ||
+          lookahead == ' ') ADVANCE(8);
+      if (lookahead != 0) ADVANCE(9);
       END_STATE();
     case 3:
-      ACCEPT_TOKEN(anon_sym_LT);
+      ACCEPT_TOKEN(ts_builtin_sym_end);
       END_STATE();
     case 4:
-      ACCEPT_TOKEN(aux_sym_keycode_token1);
-      if (('\t' <= lookahead && lookahead <= '\r') ||
-          lookahead == ' ') ADVANCE(4);
-      if (lookahead != 0 &&
-          lookahead != '>') ADVANCE(5);
+      ACCEPT_TOKEN(anon_sym_LT);
       END_STATE();
     case 5:
       ACCEPT_TOKEN(aux_sym_keycode_token1);
+      if (('\t' <= lookahead && lookahead <= '\r') ||
+          lookahead == ' ') ADVANCE(5);
       if (lookahead != 0 &&
-          lookahead != '>') ADVANCE(5);
+          lookahead != '>') ADVANCE(6);
       END_STATE();
     case 6:
+      ACCEPT_TOKEN(aux_sym_keycode_token1);
+      if (lookahead != 0 &&
+          lookahead != '>') ADVANCE(6);
+      END_STATE();
+    case 7:
       ACCEPT_TOKEN(anon_sym_GT);
+      END_STATE();
+    case 8:
+      ACCEPT_TOKEN(sym__not_keycode);
+      if (('\t' <= lookahead && lookahead <= '\r') ||
+          lookahead == ' ') ADVANCE(8);
+      if (lookahead != 0 &&
+          lookahead != '<') ADVANCE(9);
+      END_STATE();
+    case 9:
+      ACCEPT_TOKEN(sym__not_keycode);
+      if (lookahead != 0 &&
+          lookahead != '<') ADVANCE(9);
       END_STATE();
     default:
       return false;
@@ -135,12 +169,13 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
 
 static const TSLexerMode ts_lex_modes[STATE_COUNT] = {
   [0] = {.lex_state = 0},
-  [1] = {.lex_state = 0},
-  [2] = {.lex_state = 1},
-  [3] = {.lex_state = 0},
-  [4] = {.lex_state = 0},
-  [5] = {.lex_state = 0},
+  [1] = {.lex_state = 2},
+  [2] = {.lex_state = 2},
+  [3] = {.lex_state = 2},
+  [4] = {.lex_state = 2},
+  [5] = {.lex_state = 1},
   [6] = {.lex_state = 0},
+  [7] = {.lex_state = 0},
 };
 
 static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
@@ -150,47 +185,68 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_GT] = ACTIONS(1),
   },
   [STATE(1)] = {
-    [sym_map_side] = STATE(3),
-    [sym_keycode] = STATE(4),
+    [sym_map_side] = STATE(6),
+    [sym_keycode] = STATE(2),
+    [aux_sym_map_side_repeat1] = STATE(2),
     [anon_sym_LT] = ACTIONS(3),
+    [sym__not_keycode] = ACTIONS(5),
+  },
+  [STATE(2)] = {
+    [sym_keycode] = STATE(3),
+    [aux_sym_map_side_repeat1] = STATE(3),
+    [ts_builtin_sym_end] = ACTIONS(7),
+    [anon_sym_LT] = ACTIONS(3),
+    [sym__not_keycode] = ACTIONS(9),
+  },
+  [STATE(3)] = {
+    [sym_keycode] = STATE(3),
+    [aux_sym_map_side_repeat1] = STATE(3),
+    [ts_builtin_sym_end] = ACTIONS(11),
+    [anon_sym_LT] = ACTIONS(13),
+    [sym__not_keycode] = ACTIONS(16),
   },
 };
 
 static const uint16_t ts_small_parse_table[] = {
-  [0] = 1,
-    ACTIONS(5), 1,
-      aux_sym_keycode_token1,
-  [4] = 1,
-    ACTIONS(7), 1,
+  [0] = 2,
+    ACTIONS(21), 1,
+      anon_sym_LT,
+    ACTIONS(19), 2,
       ts_builtin_sym_end,
+      sym__not_keycode,
   [8] = 1,
-    ACTIONS(9), 1,
-      ts_builtin_sym_end,
+    ACTIONS(23), 1,
+      aux_sym_keycode_token1,
   [12] = 1,
-    ACTIONS(11), 1,
-      anon_sym_GT,
-  [16] = 1,
-    ACTIONS(13), 1,
+    ACTIONS(25), 1,
       ts_builtin_sym_end,
+  [16] = 1,
+    ACTIONS(27), 1,
+      anon_sym_GT,
 };
 
 static const uint32_t ts_small_parse_table_map[] = {
-  [SMALL_STATE(2)] = 0,
-  [SMALL_STATE(3)] = 4,
-  [SMALL_STATE(4)] = 8,
-  [SMALL_STATE(5)] = 12,
-  [SMALL_STATE(6)] = 16,
+  [SMALL_STATE(4)] = 0,
+  [SMALL_STATE(5)] = 8,
+  [SMALL_STATE(6)] = 12,
+  [SMALL_STATE(7)] = 16,
 };
 
 static const TSParseActionEntry ts_parse_actions[] = {
   [0] = {.entry = {.count = 0, .reusable = false}},
   [1] = {.entry = {.count = 1, .reusable = false}}, RECOVER(),
-  [3] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
-  [5] = {.entry = {.count = 1, .reusable = true}}, SHIFT(5),
-  [7] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
-  [9] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_map_side, 1, 0, 0),
-  [11] = {.entry = {.count = 1, .reusable = true}}, SHIFT(6),
-  [13] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_keycode, 3, 0, 0),
+  [3] = {.entry = {.count = 1, .reusable = false}}, SHIFT(5),
+  [5] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
+  [7] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_map_side, 1, 0, 0),
+  [9] = {.entry = {.count = 1, .reusable = true}}, SHIFT(3),
+  [11] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_map_side_repeat1, 2, 0, 0),
+  [13] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_map_side_repeat1, 2, 0, 0), SHIFT_REPEAT(5),
+  [16] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_map_side_repeat1, 2, 0, 0), SHIFT_REPEAT(3),
+  [19] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_keycode, 3, 0, 0),
+  [21] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_keycode, 3, 0, 0),
+  [23] = {.entry = {.count = 1, .reusable = true}}, SHIFT(7),
+  [25] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
+  [27] = {.entry = {.count = 1, .reusable = true}}, SHIFT(4),
 };
 
 #ifdef __cplusplus

@@ -11,8 +11,9 @@ module.exports = grammar({
   name: "vim_map_side",
 
   rules: {
-    map_side: ($) => $.keycode,
+    map_side: ($) => repeat1(choice($.keycode, $._not_keycode)),
 
     keycode: () => seq("<", /[^>]+/, ">"),
+    _not_keycode: () => /[^<]+/,
   },
 });
