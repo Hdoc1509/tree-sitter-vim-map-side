@@ -6,3 +6,13 @@
 "     ^ @punctuation.bracket
 "      ^^^ @character.special
 "         ^ @punctuation.bracket
+
+" === <cmd> with pipe ===
+<cmd>call CustomFunction() \| OtherCommand<CR>
+" <- @punctuation.bracket
+"^^^ @character.special
+"   ^ @punctuation.bracket
+"                          ^^ @string.escape
+"                                         ^ @punctuation.bracket
+"                                          ^^ @character.special
+"                                            ^ @punctuation.bracket
