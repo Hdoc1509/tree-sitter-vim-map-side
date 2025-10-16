@@ -1,0 +1,11 @@
+======
+printf
+======
+printf('m`%so<esc>``', v:count1)
+---
+(map_side
+  (expression
+    (printf
+      (string
+        (string_content))
+     (argument))))
