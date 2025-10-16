@@ -43,7 +43,8 @@ module.exports = grammar({
         alias($._first_command, $.command),
         repeat(choice($.command, $._pipe)),
         "<",
-        alias(choice("cr", "CR"), $.keycode)
+        alias(choice("cr", "CR"), $.keycode),
+        ">"
       ),
     _first_command: ($) => seq(":", optional($._range), /[^<|\\]+/),
     _range: () => "'<,'>",

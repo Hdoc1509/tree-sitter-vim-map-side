@@ -177,6 +177,10 @@
           },
           "named": true,
           "value": "keycode"
+        },
+        {
+          "type": "STRING",
+          "value": ">"
         }
       ]
     },
