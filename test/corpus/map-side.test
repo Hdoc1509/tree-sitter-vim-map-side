@@ -34,3 +34,14 @@ keycode with ignored keys
   (command)
   (command)
   (keycode))
+
+===========
+: with pipe
+===========
+:call CustomFunction() \| OtherCommand\|EventMoreCommands<CR>
+---
+(map_side
+  (command)
+  (command)
+  (command)
+  (keycode))
