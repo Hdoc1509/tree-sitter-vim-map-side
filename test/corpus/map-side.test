@@ -45,3 +45,13 @@ keycode with ignored keys
   (command)
   (command)
   (keycode))
+
+============
+: with range
+============
+:'<,'>call CustomFunction() \| FormatWrite<CR>
+---
+(map_side
+  (command)
+  (command)
+  (keycode))
