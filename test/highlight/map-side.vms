@@ -1,0 +1,8 @@
+" === keycodes ===
+<c-w>]<c-w>T
+" <- @punctuation.bracket
+"^^^ @character.special
+"   ^ @punctuation.bracket
+"     ^ @punctuation.bracket
+"      ^^^ @character.special
+"         ^ @punctuation.bracket

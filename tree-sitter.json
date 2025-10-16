@@ -10,7 +10,8 @@
         "vms"
       ],
       "injection-regex": "^vim_map_side$",
-      "class-name": "TreeSitterVimMapSide"
+      "class-name": "TreeSitterVimMapSide",
+      "highlights": "queries/highlights.scm"
     }
   ],
   "metadata": {
