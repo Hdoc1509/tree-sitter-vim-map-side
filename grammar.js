@@ -30,11 +30,13 @@ module.exports = grammar({
 
     _colon_rhs: ($) =>
       seq(
-        ":",
-        repeat1(choice($.command, $._pipe)),
+        alias($._first_command, $.command),
+        repeat(choice($.command, $._pipe)),
         "<",
         alias(choice("cr", "CR"), $.keycode)
       ),
+    _first_command: ($) => seq(":", optional($._range), /[^<|\\]+/),
+    _range: () => "'<,'>",
 
     command: () => /[^<|\\]+/,
 
