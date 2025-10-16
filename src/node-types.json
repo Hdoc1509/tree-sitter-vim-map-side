@@ -1,5 +1,10 @@
 [
   {
+    "type": "command",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "keycode",
     "named": true,
     "fields": {}
@@ -13,6 +18,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "command",
+          "named": true
+        },
         {
           "type": "keycode",
           "named": true
