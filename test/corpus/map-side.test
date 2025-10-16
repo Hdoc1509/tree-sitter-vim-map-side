@@ -55,3 +55,17 @@ keycode with ignored keys
   (command)
   (command)
   (keycode))
+
+========
+comments
+========
+<cmd>Format<cr>
+" comment
+" <- @punctuation.bracket
+---
+(map_side
+  (keycode)
+  (command)
+  (keycode)
+  (comment)
+  (comment))
