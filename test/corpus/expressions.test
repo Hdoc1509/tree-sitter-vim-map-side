@@ -8,4 +8,6 @@ printf('m`%so<esc>``', v:count1)
     (printf
       (string
         (string_content))
-     (argument))))
+      (scoped_identifier
+        (scope)
+        (identifier)))))

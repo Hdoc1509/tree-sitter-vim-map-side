@@ -30,5 +30,6 @@ printf('m`%so<esc>``', v:count1)
 " <- @function.call
 "     ^ @punctuation.bracket
 "      ^^^^^^^^^^^^^^ @string
-"                    ^ @punctuation.delimiter
+"                      ^^ @module
+"                        ^^^^^^ @variable
 "                              ^ @punctuation.bracket
