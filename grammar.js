@@ -25,7 +25,7 @@ module.exports = grammar({
       ),
 
     keycode: () => seq("<", /[^>]+/, ">"),
-    _not_keycode: () => /[^<:("]+/,
+    _not_keycode: () => /[^<:("\r\n]+/,
 
     _cmd_rhs: ($) =>
       seq(
@@ -60,12 +60,16 @@ module.exports = grammar({
         "printf",
         "(",
         // NOTE: `optional` to allow highlighting while writing code
-        optional(seq($.string, repeat(seq(",", $.argument)))),
+        optional(seq($.string, repeat(seq(",", $._argument)))),
         ")"
       ),
     string: ($) => seq("'", $.string_content, "'"),
     string_content: () => /[^']+/,
-    argument: () => /[^)]+/,
+    _argument: ($) => choice($.scoped_identifier),
+
+    scoped_identifier: ($) => seq($.scope, $.identifier),
+    scope: () => /[glv]:/,
+    identifier: () => /[a-zA-Z_][a-zA-Z0-9_]+/,
 
     // NOTE: just for highlighting tests
     comment: () => /".+/,

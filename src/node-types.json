@@ -57,11 +57,30 @@
       "required": false,
       "types": [
         {
-          "type": "argument",
+          "type": "scoped_identifier",
           "named": true
         },
         {
           "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "scoped_identifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "scope",
           "named": true
         }
       ]
@@ -119,17 +138,21 @@
     "named": false
   },
   {
-    "type": "argument",
-    "named": true
-  },
-  {
     "type": "comment",
     "named": true,
     "extra": true
   },
   {
+    "type": "identifier",
+    "named": true
+  },
+  {
     "type": "printf",
     "named": false
+  },
+  {
+    "type": "scope",
+    "named": true
   },
   {
     "type": "string_content",
