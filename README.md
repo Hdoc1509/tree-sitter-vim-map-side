@@ -89,6 +89,59 @@ WIP
 You can get the built files from the [`release` branch][release-branch]. If you
 have specific instructions for your editor, PR's are welcome.
 
+## Injections
+
+### `lua` parser
+
+For `vim.keymap.set()` function of `neovim`:
+
+```query
+; NOTE: for lhs
+(function_call
+  name: (dot_index_expression) @_fn
+  arguments: (arguments
+    .
+    (_) ; -- mode --
+    (string
+      (string_content) @injection.content))
+  (#eq? @_fn "vim.keymap.set")
+  (#lua-match? @injection.content "<.+>")
+  (#set! injection.language "vim_map_side"))
+
+; NOTE: for general rhs
+(function_call
+  name: (dot_index_expression) @_fn
+  arguments: (arguments
+    .
+    (_) ; -- mode --
+    (_) ; -- lhs --
+    (string
+      (string_content) @injection.content))
+  (#eq? @_fn "vim.keymap.set")
+  (#eq? @_expr "expr")
+  ; NOTE: to avoid double injection
+  (#not-lua-match? @injection.content "printf")
+  (#set! injection.language "vim_map_side"))
+
+; NOTE: for expressions as rhs
+(function_call
+  name: (dot_index_expression) @_fn
+  arguments: (arguments
+    .
+    (_) ; -- mode --
+    (_) ; -- lhs --
+    (string
+      (string_content) @injection.content)
+    (table_constructor
+      (field
+        name: (identifier) @_expr
+        value: (true))) .)
+  (#eq? @_fn "vim.keymap.set")
+  (#eq? @_expr "expr")
+  (#lua-match? @injection.content "printf")
+  (#set! injection.language "vim_map_side"))
+```
+
 [ci]: https://github.com/Hdoc1509/tree-sitter-vim-map-side/actions/workflows/ci.yml/badge.svg
 [discord]: https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord
 [matrix]: https://img.shields.io/matrix/tree-sitter-chat%3Amatrix.org?logo=matrix&label=matrix
