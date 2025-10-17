@@ -142,6 +142,10 @@ For `vim.keymap.set()` function of `neovim`:
   (#set! injection.language "vim_map_side"))
 ```
 
+## References
+
+- [tree-sitter-vim grammar][ts-vim]
+
 [ci]: https://github.com/Hdoc1509/tree-sitter-vim-map-side/actions/workflows/ci.yml/badge.svg
 [discord]: https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord
 [matrix]: https://img.shields.io/matrix/tree-sitter-chat%3Amatrix.org?logo=matrix&label=matrix
