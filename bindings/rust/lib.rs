@@ -5,6 +5,7 @@
 //!
 //! ```
 //! let code = r#"
+//! <leader>[a
 //! "#;
 //! let mut parser = tree_sitter::Parser::new();
 //! let language = tree_sitter_vim_map_side::LANGUAGE;
