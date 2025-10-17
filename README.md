@@ -18,11 +18,12 @@ that `rhs` starts with `:` ([not supported at the moment][ts-vim-map-colon]).
 
 ## Parser requirements
 
-- [`lua`](https://github.com/tree-sitter-grammars/tree-sitter-lua): injection to
-  arguments of `vim.keymap.set()` function for `lhs` and `rhs`
-- [`vim`](https://github.com/tree-sitter-grammars/tree-sitter-vim) (optional):
-  injection to `rhs` when it starts with `:` and to `command` nodes of this
-  grammar.
+- [`lua`][ts-lua]: injection to arguments of `vim.keymap.set()` function for
+  `lhs` and `rhs`
+- [`printf`][ts-printf] (optional): injection to first argument of `printf()`
+  expression.
+- [`vim`][ts-vim] (optional): injection to `rhs` when it starts with `:` and to
+  `command` nodes of this grammar.
 
 [ci]: https://github.com/Hdoc1509/tree-sitter-vim-map-side/actions/workflows/ci.yml/badge.svg
 [discord]: https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord
@@ -31,3 +32,6 @@ that `rhs` starts with `:` ([not supported at the moment][ts-vim-map-colon]).
 [npm]: https://img.shields.io/npm/v/tree-sitter-vim-map-side?logo=npm
 [pypi]: https://img.shields.io/pypi/v/tree-sitter-vim-map-side?logo=pypi&logoColor=ffd242
 [ts-vim-map-colon]: https://github.com/tree-sitter-grammars/tree-sitter-vim/blob/3dd4747082d1b717b8978211c06ef7b6cd16125b/test/corpus/map.txt#L278-L281
+[ts-lua]: https://github.com/tree-sitter-grammars/tree-sitter-lua
+[ts-printf]: https://github.com/tree-sitter-grammars/tree-sitter-printf
+[ts-vim]: https://github.com/tree-sitter-grammars/tree-sitter-vim
