@@ -24,9 +24,9 @@ keycode with ignored keys
   (command)
   (keycode))
 
-====================
-<cmd> with pipe (\|)
-====================
+===============
+<cmd> with pipe
+===============
 <cmd>call CustomFunction() \| OtherCommand<CR>
 ---
 (map_side
