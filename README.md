@@ -114,13 +114,13 @@ For `vim.keymap.set()` function of `neovim`:
   arguments: (arguments
     .
     (_) ; -- mode --
+    .
     (_) ; -- lhs --
+    .
     (string
       (string_content) @injection.content))
   (#eq? @_fn "vim.keymap.set")
-  (#eq? @_expr "expr")
-  ; NOTE: to avoid double injection
-  (#not-lua-match? @injection.content "printf")
+  (#lua-match? @injection.content "<.+>")
   (#set! injection.language "vim_map_side"))
 
 ; NOTE: for expressions as rhs
@@ -129,16 +129,17 @@ For `vim.keymap.set()` function of `neovim`:
   arguments: (arguments
     .
     (_) ; -- mode --
+    .
     (_) ; -- lhs --
+    .
     (string
       (string_content) @injection.content)
-    (table_constructor
-      (field
-        name: (identifier) @_expr
-        value: (true))) .)
+    .
+    (table_constructor) @_options)
   (#eq? @_fn "vim.keymap.set")
-  (#eq? @_expr "expr")
-  (#lua-match? @injection.content "printf")
+  ; NOTE: to avoid double injection
+  (#not-lua-match? @injection.content "<.+>")
+  (#lua-match? @_options "expr%s*=%s*true")
   (#set! injection.language "vim_map_side"))
 ```
 
