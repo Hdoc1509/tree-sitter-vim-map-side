@@ -33,14 +33,14 @@ module.exports = grammar({
         alias(choice("cmd", "Cmd", "CMD"), $.keycode),
         ">",
         $.command,
-        repeat(seq($._pipe, $.command)),
+        repeat(seq($.pipe, $.command)),
         $.keycode
       ),
 
     _colon_rhs: ($) =>
       seq(
         alias($._first_command, $.command),
-        repeat(seq($._pipe, $.command)),
+        repeat(seq($.pipe, $.command)),
         $.keycode
       ),
     _first_command: ($) => seq(":", optional($._range), /[^<|\\]+/),
@@ -48,7 +48,7 @@ module.exports = grammar({
 
     command: () => /[^<|\\]+/,
 
-    _pipe: () => "\\|",
+    pipe: () => seq(optional("\\"), "|"),
 
     expression: ($) => $.printf,
 

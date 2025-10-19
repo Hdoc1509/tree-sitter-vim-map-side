@@ -95,7 +95,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "_pipe"
+                "name": "pipe"
               },
               {
                 "type": "SYMBOL",
@@ -129,7 +129,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "_pipe"
+                "name": "pipe"
               },
               {
                 "type": "SYMBOL",
@@ -177,9 +177,26 @@
       "type": "PATTERN",
       "value": "[^<|\\\\]+"
     },
-    "_pipe": {
-      "type": "STRING",
-      "value": "\\|"
+    "pipe": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "\\"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "|"
+        }
+      ]
     },
     "expression": {
       "type": "SYMBOL",

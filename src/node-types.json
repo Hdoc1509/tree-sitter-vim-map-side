@@ -44,9 +44,18 @@
         {
           "type": "keycode",
           "named": true
+        },
+        {
+          "type": "pipe",
+          "named": true
         }
       ]
     }
+  },
+  {
+    "type": "pipe",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "printf",
@@ -134,7 +143,7 @@
     "named": false
   },
   {
-    "type": "\\|",
+    "type": "\\",
     "named": false
   },
   {
@@ -157,5 +166,9 @@
   {
     "type": "string_content",
     "named": true
+  },
+  {
+    "type": "|",
+    "named": false
   }
 ]
