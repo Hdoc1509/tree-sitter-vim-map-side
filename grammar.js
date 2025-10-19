@@ -20,13 +20,16 @@ module.exports = grammar({
           $.expression,
           $._cmd_rhs,
           $._colon_rhs,
-          $._not_keycode
+          $._not_keycode,
+          $._range_s_command
         )
       ),
 
     keycode: () => seq("<", /[^>\r\n]+/, ">"),
     _not_keycode: () => /[^<:("\r\n]+/,
 
+    _range_s_command: ($) =>
+      seq(alias(":%", $.command), alias(/s[^\r\n]+/, $.command)),
     _cmd_rhs: ($) =>
       seq(
         "<",

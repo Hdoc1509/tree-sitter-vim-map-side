@@ -26,6 +26,10 @@
           {
             "type": "SYMBOL",
             "name": "_not_keycode"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_range_s_command"
           }
         ]
       }
@@ -50,6 +54,29 @@
     "_not_keycode": {
       "type": "PATTERN",
       "value": "[^<:(\"\\r\\n]+"
+    },
+    "_range_s_command": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": ":%"
+          },
+          "named": true,
+          "value": "command"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "s[^\\r\\n]+"
+          },
+          "named": true,
+          "value": "command"
+        }
+      ]
     },
     "_cmd_rhs": {
       "type": "SEQ",
