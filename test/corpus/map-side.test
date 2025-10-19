@@ -32,6 +32,19 @@ keycode with ignored keys
 (map_side
   (keycode)
   (command)
+  (pipe)
+  (command)
+  (keycode))
+
+==============================
+<cmd> with pipe for lua string
+==============================
+<cmd>tabnew | Git<cr>
+---
+(map_side
+  (keycode)
+  (command)
+  (pipe)
   (command)
   (keycode))
 
@@ -42,7 +55,9 @@ keycode with ignored keys
 ---
 (map_side
   (command)
+  (pipe)
   (command)
+  (pipe)
   (command)
   (keycode))
 
@@ -53,6 +68,7 @@ keycode with ignored keys
 ---
 (map_side
   (command)
+  (pipe)
   (command)
   (keycode))
 
