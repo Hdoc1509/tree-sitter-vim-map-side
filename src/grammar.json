@@ -260,8 +260,16 @@
           "value": "'"
         },
         {
-          "type": "SYMBOL",
-          "name": "string_content"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "string_content"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",

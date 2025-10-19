@@ -60,7 +60,7 @@ module.exports = grammar({
         optional(seq($.string, repeat(seq(",", $._argument)))),
         ")"
       ),
-    string: ($) => seq("'", $.string_content, "'"),
+    string: ($) => seq("'", optional($.string_content), "'"),
     string_content: () => /[^']+/,
     _argument: ($) => choice($.scoped_identifier),
 
