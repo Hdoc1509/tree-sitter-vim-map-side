@@ -24,7 +24,7 @@ module.exports = grammar({
         )
       ),
 
-    keycode: () => seq("<", /[^>]+/, ">"),
+    keycode: () => seq("<", /[^>\r\n]+/, ">"),
     _not_keycode: () => /[^<:("\r\n]+/,
 
     _cmd_rhs: ($) =>
