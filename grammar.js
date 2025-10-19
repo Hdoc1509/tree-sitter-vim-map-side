@@ -69,7 +69,7 @@ module.exports = grammar({
     identifier: () => /[a-zA-Z_][a-zA-Z0-9_]+/,
 
     // NOTE: just for highlighting tests
-    comment: () => /".+/,
+    comment: () => /"[^\r\n]*/,
 
     _blank: () => /\s+/,
   },

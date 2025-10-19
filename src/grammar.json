@@ -313,7 +313,7 @@
     },
     "comment": {
       "type": "PATTERN",
-      "value": "\".+"
+      "value": "\"[^\\r\\n]*"
     },
     "_blank": {
       "type": "PATTERN",
