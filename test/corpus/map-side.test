@@ -48,6 +48,18 @@ keycode with ignored keys
   (command)
   (keycode))
 
+==================
+: between keycodes
+==================
+<c-w><cr>:cclose<cr><c-w>T
+---
+(map_side
+  (keycode)
+  (keycode)
+  (command)
+  (keycode)
+  (keycode))
+
 ===========
 : with pipe
 ===========
