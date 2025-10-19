@@ -22,7 +22,8 @@ module.exports = grammar({
           $._colon_rhs,
           $._not_keycode,
           $._range_s_command,
-          $._vimgrep
+          $._vimgrep,
+          $.lua_cur_line
         )
       ),
 
@@ -33,6 +34,8 @@ module.exports = grammar({
       seq(alias(":%", $.command), alias(/s[^\r\n]+/, $.command)),
 
     _vimgrep: ($) => alias(/:vimgrep[^\r\n]+/, $.command),
+
+    lua_cur_line: ($) => seq(":", ".", alias("lua", $.command), $.keycode),
 
     _cmd_rhs: ($) =>
       seq(
@@ -50,7 +53,7 @@ module.exports = grammar({
         repeat(seq($.pipe, $.command)),
         $.keycode
       ),
-    _first_command: ($) => seq(":", optional($._range), /[^<|\\]+/),
+    _first_command: ($) => seq(":", optional($._range), /[^<|\\.]+/),
     _range: () => "'<,'>",
 
     command: () => /[^<|\\]+/,

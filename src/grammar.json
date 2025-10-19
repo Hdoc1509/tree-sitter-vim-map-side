@@ -34,6 +34,10 @@
           {
             "type": "SYMBOL",
             "name": "_vimgrep"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "lua_cur_line"
           }
         ]
       }
@@ -90,6 +94,32 @@
       },
       "named": true,
       "value": "command"
+    },
+    "lua_cur_line": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "lua"
+          },
+          "named": true,
+          "value": "command"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "keycode"
+        }
+      ]
     },
     "_cmd_rhs": {
       "type": "SEQ",
@@ -205,7 +235,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "[^<|\\\\]+"
+          "value": "[^<|\\\\.]+"
         }
       ]
     },
