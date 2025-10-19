@@ -3,44 +3,63 @@
   "name": "vim_map_side",
   "rules": {
     "map_side": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "keycode"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "expression"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_cmd_rhs"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_colon_rhs"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_not_keycode"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_range_s_command"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_vimgrep"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "lua_cur_line"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_not_keycode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_range_s_command"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_vimgrep"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "keycode"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_cmd_rhs"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_colon_rhs"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_not_keycode"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "lua_cur_line"
+              }
+            ]
           }
-        ]
-      }
+        }
+      ]
     },
     "keycode": {
       "type": "SEQ",

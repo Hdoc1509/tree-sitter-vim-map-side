@@ -36,15 +36,6 @@
 "                                                         ^^ @character.special
 "                                                           ^ @punctuation.bracket
 
-" === printf ===
-printf('m`%so<esc>``', v:count1)
-" <- @function.call
-"     ^ @punctuation.bracket
-"      ^^^^^^^^^^^^^^ @string
-"                      ^^ @module
-"                        ^^^^^^ @variable
-"                              ^ @punctuation.bracket
-
 " === lua current line ===
 :.lua<cr>
 " <- @punctuation.delimiter

@@ -14,16 +14,17 @@ module.exports = grammar({
 
   rules: {
     map_side: ($) =>
-      repeat1(
-        choice(
-          $.keycode,
-          $.expression,
-          $._cmd_rhs,
-          $._colon_rhs,
-          $._not_keycode,
-          $._range_s_command,
-          $._vimgrep,
-          $.lua_cur_line
+      choice(
+        $.expression,
+        seq($._not_keycode, choice($._range_s_command, $._vimgrep)),
+        repeat1(
+          choice(
+            $.keycode,
+            $._cmd_rhs,
+            $._colon_rhs,
+            $._not_keycode,
+            $.lua_cur_line
+          )
         )
       ),
 
