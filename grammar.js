@@ -21,7 +21,8 @@ module.exports = grammar({
           $._cmd_rhs,
           $._colon_rhs,
           $._not_keycode,
-          $._range_s_command
+          $._range_s_command,
+          $._vimgrep
         )
       ),
 
@@ -30,6 +31,9 @@ module.exports = grammar({
 
     _range_s_command: ($) =>
       seq(alias(":%", $.command), alias(/s[^\r\n]+/, $.command)),
+
+    _vimgrep: ($) => alias(/:vimgrep[^\r\n]+/, $.command),
+
     _cmd_rhs: ($) =>
       seq(
         "<",

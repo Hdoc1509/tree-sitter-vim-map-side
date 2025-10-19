@@ -30,6 +30,10 @@
           {
             "type": "SYMBOL",
             "name": "_range_s_command"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_vimgrep"
           }
         ]
       }
@@ -77,6 +81,15 @@
           "value": "command"
         }
       ]
+    },
+    "_vimgrep": {
+      "type": "ALIAS",
+      "content": {
+        "type": "PATTERN",
+        "value": ":vimgrep[^\\r\\n]+"
+      },
+      "named": true,
+      "value": "command"
     },
     "_cmd_rhs": {
       "type": "SEQ",
