@@ -6,3 +6,12 @@ y:%s/<c-r>0/replace/gc<left><left><left><c-w>
 (map_side
   (command)
   (command))
+
+========
+:vimgrep
+========
+y:vimgrep /<c-r>0/ ** | copen |cdo %s/<c-r>0/replace/gc<left><left><left><c-w>
+---
+(map_side
+  (command))
+
