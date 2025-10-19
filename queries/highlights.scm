@@ -30,6 +30,12 @@
 
 "," @punctuation.delimiter
 
+(lua_cur_line
+  ":" @punctuation.delimiter)
+
+(lua_cur_line
+  "." @punctuation.special)
+
 (scoped_identifier
   (scope) @module)
 
