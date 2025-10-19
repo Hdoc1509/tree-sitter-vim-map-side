@@ -84,6 +84,16 @@ keycode with ignored keys
   (command)
   (keycode))
 
+=====
+:.lua
+=====
+:.lua<cr>
+---
+(map_side
+  (lua_cur_line
+    (command)
+    (keycode)))
+
 ========
 comments
 ========
