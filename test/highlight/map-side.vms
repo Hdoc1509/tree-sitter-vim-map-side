@@ -44,3 +44,11 @@ printf('m`%so<esc>``', v:count1)
 "                      ^^ @module
 "                        ^^^^^^ @variable
 "                              ^ @punctuation.bracket
+
+" === lua current line ===
+:.lua<cr>
+" <- @punctuation.delimiter
+"^ @punctuation.special
+"    ^ @punctuation.bracket
+"     ^^ @character.special
+"       ^ @punctuation.bracket
