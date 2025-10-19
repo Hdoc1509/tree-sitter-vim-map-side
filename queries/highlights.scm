@@ -14,7 +14,12 @@
     ">"
   ] @punctuation.bracket)
 
-"\\|" @string.escape
+(pipe
+  "|" @operator)
+
+(pipe
+  "\\" @string.escape
+  "|" @string.escape)
 
 "printf" @function.call
 
