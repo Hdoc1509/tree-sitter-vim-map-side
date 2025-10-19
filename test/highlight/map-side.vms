@@ -17,6 +17,17 @@
 "                                          ^^ @character.special
 "                                            ^ @punctuation.bracket
 
+" === <cmd> with pipe in lua string ===
+<cmd>tabnew | Git<cr><c-w>o
+" <- @punctuation.bracket
+"^^^ @character.special
+"   ^ @punctuation.bracket
+"                ^ @punctuation.bracket
+"                 ^^ @character.special
+"                   ^^ @punctuation.bracket
+"                     ^^^ @character.special
+"                        ^ @punctuation.bracket
+
 " === : with pipe ===
 :call CustomFunction() \| OtherCommand\|EventMoreCommands<CR>
 "                      ^^ @string.escape
