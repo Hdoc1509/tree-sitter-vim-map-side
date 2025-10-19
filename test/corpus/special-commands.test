@@ -1,0 +1,8 @@
+============
+:%s command
+============
+y:%s/<c-r>0/replace/gc<left><left><left><c-w>
+---
+(map_side
+  (command)
+  (command))
