@@ -15,3 +15,12 @@ y:vimgrep /<c-r>0/ ** | copen |cdo %s/<c-r>0/replace/gc<left><left><left><c-w>
 (map_side
   (command))
 
+=====
+:.lua
+=====
+:.lua<cr>
+---
+(map_side
+  (lua_cur_line
+    (command)
+    (keycode)))
