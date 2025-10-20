@@ -105,7 +105,7 @@ For `vim.keymap.set()` function of `neovim`:
     (string
       (string_content) @injection.content))
   (#eq? @_fn "vim.keymap.set")
-  (#lua-match? @injection.content "<.+>")
+  (#match? @injection.content "<.+>")
   (#set! injection.language "vim_map_side"))
 
 ; NOTE: for general rhs
@@ -120,7 +120,23 @@ For `vim.keymap.set()` function of `neovim`:
     (string
       (string_content) @injection.content))
   (#eq? @_fn "vim.keymap.set")
-  (#lua-match? @injection.content "<.+>")
+  (#match? @injection.content "<.+>")
+  (#set! injection.language "vim_map_side"))
+
+; NOTE: for `:` rhs without keycode
+(function_call
+  name: (dot_index_expression) @_fn
+  arguments: (arguments
+    .
+    (_) ; -- mode --
+    .
+    (_) ; -- lhs --
+    .
+    (string
+      (string_content) @injection.content))
+  (#eq? @_fn "vim.keymap.set")
+  (#not-match? @injection.content "<.+>")
+  (#match? @injection.content "^:")
   (#set! injection.language "vim_map_side"))
 
 ; NOTE: for expressions as rhs
@@ -138,8 +154,8 @@ For `vim.keymap.set()` function of `neovim`:
     (table_constructor) @_options)
   (#eq? @_fn "vim.keymap.set")
   ; NOTE: to avoid double injection
-  (#not-lua-match? @injection.content "<.+>")
-  (#lua-match? @_options "expr%s*=%s*true")
+  (#not-match? @injection.content "<.+>")
+  (#match? @_options "expr\s*=\s*true")
   (#set! injection.language "vim_map_side"))
 ```
 
