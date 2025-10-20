@@ -58,7 +58,7 @@ with `rhs` that starts with `:` ([not supported at the moment][ts-vim-map-colon]
    require('nvim-treesitter.configs').setup({
      ensure_installed = {
        -- other parsers
-       'lua', -- intended to be used
+       'lua', -- required
        'printf', -- optional
        'vim', -- optional
        'vim_map_side', -- this parser
