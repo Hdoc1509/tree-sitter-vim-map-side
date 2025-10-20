@@ -159,6 +159,16 @@ For `vim.keymap.set()` function of `neovim`:
   (#set! injection.language "vim_map_side"))
 ```
 
+### `vim` parser
+
+```query
+(map_statement
+  rhs: (map_side) @injection.content
+  (#match? @injection.content "^:")
+  (#set! injection.include-children)
+  (#set! injection.language "vim_map_side"))
+```
+
 ## References
 
 - [tree-sitter-vim grammar][ts-vim]
