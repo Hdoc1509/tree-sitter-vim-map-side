@@ -11,7 +11,7 @@
 grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
 
 Primaryly intended to be used within `lua`, but also supports `vim` mappings
-that `rhs` starts with `:` ([not supported at the moment][ts-vim-map-colon]).
+with `rhs` that starts with `:` ([not supported at the moment][ts-vim-map-colon]).
 
 > [!IMPORTANT]
 > ABI version: `15`
