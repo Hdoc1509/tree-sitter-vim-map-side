@@ -102,6 +102,7 @@ For `vim.keymap.set()` function of `neovim`:
   arguments: (arguments
     .
     (_) ; -- mode --
+    .
     (string
       (string_content) @injection.content))
   (#eq? @_fn "vim.keymap.set")
