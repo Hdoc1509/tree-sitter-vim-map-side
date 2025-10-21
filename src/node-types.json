@@ -44,18 +44,9 @@
         {
           "type": "keycode",
           "named": true
-        },
-        {
-          "type": "pipe",
-          "named": true
         }
       ]
     }
-  },
-  {
-    "type": "pipe",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "printf",

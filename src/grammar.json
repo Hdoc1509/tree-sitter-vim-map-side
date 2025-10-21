@@ -185,7 +185,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "pipe"
+                "name": "_pipe"
               },
               {
                 "type": "SYMBOL",
@@ -219,7 +219,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "pipe"
+                "name": "_pipe"
               },
               {
                 "type": "SYMBOL",
@@ -267,7 +267,7 @@
       "type": "PATTERN",
       "value": "[^<|\\\\]+"
     },
-    "pipe": {
+    "_pipe": {
       "type": "CHOICE",
       "members": [
         {
