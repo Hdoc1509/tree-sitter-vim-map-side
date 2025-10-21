@@ -54,7 +54,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "lua_cur_line"
+                "name": "_lua_cur_line"
               }
             ]
           }
@@ -114,16 +114,17 @@
       "named": true,
       "value": "command"
     },
-    "lua_cur_line": {
+    "_lua_cur_line": {
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
-          "type": "STRING",
-          "value": "."
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": ":."
+          },
+          "named": true,
+          "value": "command"
         },
         {
           "type": "ALIAS",
@@ -254,7 +255,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "[^<|\\\\.]+"
+          "value": "[^<|\\\\]+"
         }
       ]
     },
