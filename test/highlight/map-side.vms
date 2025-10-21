@@ -38,8 +38,6 @@
 
 " === lua current line ===
 :.lua<cr>
-" <- @punctuation.delimiter
-"^ @punctuation.special
 "    ^ @punctuation.bracket
 "     ^^ @character.special
 "       ^ @punctuation.bracket

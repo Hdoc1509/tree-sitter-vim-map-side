@@ -90,9 +90,9 @@ keycode with ignored keys
 :.lua<cr>
 ---
 (map_side
-  (lua_cur_line
-    (command)
-    (keycode)))
+  (command)
+  (command)
+  (keycode))
 
 ========
 comments
