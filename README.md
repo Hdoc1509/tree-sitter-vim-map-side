@@ -91,6 +91,10 @@ have specific instructions for your editor, PR's are welcome.
 
 ## Injections
 
+> [!NOTE]
+> If you are using Neovim, you can use `lua-match?` and `not-lua-match?`
+> predicates instead of `match?` and `not-match?`.
+
 ### `lua` parser
 
 For `vim.keymap.set()` function of `neovim`:
