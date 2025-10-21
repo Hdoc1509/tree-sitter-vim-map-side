@@ -59,7 +59,7 @@ module.exports = grammar({
 
     command: () => /[^<|\\]+/,
 
-    pipe: () => seq(optional("\\"), "|"),
+    pipe: () => choice("\\|", "|"),
 
     expression: ($) => $.printf,
 
