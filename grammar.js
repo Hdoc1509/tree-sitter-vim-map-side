@@ -68,7 +68,6 @@ module.exports = grammar({
       seq(
         "printf",
         "(",
-        // NOTE: `optional` to allow highlighting while writing code
         optional(seq($.string, repeat(seq(",", $._argument)))),
         ")"
       ),
