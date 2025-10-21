@@ -32,7 +32,6 @@ keycode with ignored keys
 (map_side
   (keycode)
   (command)
-  (pipe)
   (command)
   (keycode))
 
@@ -44,7 +43,6 @@ keycode with ignored keys
 (map_side
   (keycode)
   (command)
-  (pipe)
   (command)
   (keycode))
 
@@ -67,9 +65,7 @@ keycode with ignored keys
 ---
 (map_side
   (command)
-  (pipe)
   (command)
-  (pipe)
   (command)
   (keycode))
 
@@ -80,7 +76,6 @@ keycode with ignored keys
 ---
 (map_side
   (command)
-  (pipe)
   (command)
   (keycode))
 
