@@ -48,7 +48,8 @@ with `rhs` that starts with `:` ([not supported at the moment][ts-vim-map-colon]
      install_info = {
        url = 'https://github.com/Hdoc1509/tree-sitter-vim-map-side',
        files = { 'src/parser.c' },
-       revision = 'release',
+       -- can also use 'deploy-vX.X.X' for specific version or full commit hash
+       revision = 'release', -- latest released version
        -- if ABI version from neovim doesn't match the one from this grammar
        -- requires Node.js and tree-sitter cli to be installed
        requires_generate_from_grammar = true,
