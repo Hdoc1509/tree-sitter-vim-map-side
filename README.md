@@ -16,6 +16,14 @@ with `rhs` that starts with `:` ([not supported at the moment][ts-vim-map-colon]
 > [!IMPORTANT]
 > ABI version: `15`
 
+## Supported `rhs` expressions
+
+- `printf()`
+- `variable-scope`: `g:`, `l:`, `v:`
+
+> [!NOTE]
+> More expressions will be supported in the future.
+
 ## Parser requirements
 
 - [`lua`][ts-lua]: injection to arguments of `vim.keymap.set()` function for

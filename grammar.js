@@ -76,6 +76,7 @@ module.exports = grammar({
     _argument: ($) => choice($.scoped_identifier),
 
     scoped_identifier: ($) => seq($.scope, $.identifier),
+    // NOTE: more scopes `:help variable-scope`
     scope: () => /[glv]:/,
     identifier: () => /[a-zA-Z_][a-zA-Z0-9_]+/,
 
