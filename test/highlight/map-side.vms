@@ -9,35 +9,54 @@
 
 " === <cmd> with pipe ===
 <cmd>call CustomFunction() \| OtherCommand<CR>
-" <- @punctuation.bracket
-"^^^ @character.special
-"   ^ @punctuation.bracket
+" <- @character.special
+" <- !@punctuation.bracket
+"^^^^ @character.special
+"   ^ !@punctuation.bracket
 "                          ^^ @string.escape
-"                                         ^ @punctuation.bracket
-"                                          ^^ @character.special
-"                                            ^ @punctuation.bracket
+"                                         ^ !@punctuation.bracket
+"                                         ^^^^ @character.special
+"                                            ^ !@punctuation.bracket
 
 " === <cmd> with pipe in lua string ===
 <cmd>tabnew | Git<cr><c-w>o
-" <- @punctuation.bracket
-"^^^ @character.special
-"   ^ @punctuation.bracket
-"                ^ @punctuation.bracket
-"                 ^^ @character.special
-"                   ^^ @punctuation.bracket
+" <- @character.special
+" <- !@punctuation.bracket
+"^^^^ @character.special
+"   ^ !@punctuation.bracket
+"                ^ !@punctuation.bracket
+"                ^^^^ @character.special
+"                   ^ !@punctuation.bracket
+"                    ^ @punctuation.bracket
 "                     ^^^ @character.special
 "                        ^ @punctuation.bracket
+
+" === : between keycodes ===
+<c-w><cr>:cclose<cr><c-w>T
+" <- @punctuation.bracket
+"^^^ @character.special
+"   ^^ @punctuation.bracket
+"    ^ ! @character.special
+"     ^^ @character.special
+"       ^ !@character.special
+"       ^ @punctuation.bracket
+"               ^ !@punctuation.bracket
+"               ^^^^ @character.special
+"                  ^ !@punctuation.bracket
+"                   ^ @punctuation.bracket
+"                    ^^^ @character.special
+"                       ^ @punctuation.bracket
 
 " === : with pipe ===
 :call CustomFunction() \| OtherCommand\|EventMoreCommands<CR>
 "                      ^^ @string.escape
 "                                     ^^ @string.escape
-"                                                        ^ @punctuation.bracket
-"                                                         ^^ @character.special
-"                                                           ^ @punctuation.bracket
+"                                                        ^ !@punctuation.bracket
+"                                                        ^^^^ @character.special
+"                                                           ^ !@punctuation.bracket
 
 " === lua current line ===
 :.lua<cr>
-"    ^ @punctuation.bracket
-"     ^^ @character.special
-"       ^ @punctuation.bracket
+"    ^ !@punctuation.bracket
+"    ^^^^ @character.special
+"       ^ !@punctuation.bracket
