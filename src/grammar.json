@@ -137,7 +137,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "keycode"
+          "name": "_cr"
         }
       ]
     },
@@ -145,34 +145,13 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "<"
-        },
-        {
           "type": "ALIAS",
           "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "cmd"
-              },
-              {
-                "type": "STRING",
-                "value": "Cmd"
-              },
-              {
-                "type": "STRING",
-                "value": "CMD"
-              }
-            ]
+            "type": "PATTERN",
+            "value": "<[Cc][Mm][Dd]>"
           },
           "named": true,
           "value": "keycode"
-        },
-        {
-          "type": "STRING",
-          "value": ">"
         },
         {
           "type": "SYMBOL",
@@ -196,7 +175,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "keycode"
+          "name": "_cr"
         }
       ]
     },
@@ -230,7 +209,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "keycode"
+          "name": "_cr"
         }
       ]
     },
@@ -266,6 +245,15 @@
     "command": {
       "type": "PATTERN",
       "value": "[^<|\\\\]+"
+    },
+    "_cr": {
+      "type": "ALIAS",
+      "content": {
+        "type": "PATTERN",
+        "value": "<[Cc][Rr]>"
+      },
+      "named": true,
+      "value": "keycode"
     },
     "_pipe": {
       "type": "CHOICE",

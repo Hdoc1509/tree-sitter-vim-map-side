@@ -7,13 +7,6 @@
     ">"
   ] @punctuation.bracket)
 
-; highlighting for <cmd> and : rhs. avoids ERROR nodes (corner cases)
-(map_side
-  [
-    "<"
-    ">"
-  ] @punctuation.bracket)
-
 "|" @operator
 
 "\\|" @string.escape

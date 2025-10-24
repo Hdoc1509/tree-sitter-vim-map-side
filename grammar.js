@@ -37,29 +37,32 @@ module.exports = grammar({
     _vimgrep: ($) => alias(/:vimgrep[^\r\n]+/, $.command),
 
     _lua_cur_line: ($) =>
-      seq(alias(":.", $.command), alias("lua", $.command), $.keycode),
+      seq(alias(":.", $.command), alias("lua", $.command), $._cr),
 
     _cmd_rhs: ($) =>
       seq(
-        "<",
-        alias(choice("cmd", "Cmd", "CMD"), $.keycode),
-        ">",
+        alias(/<[Cc][Mm][Dd]>/, $.keycode),
         $.command,
         repeat(seq($._pipe, $.command)),
-        $.keycode
+        $._cr
       ),
 
     _colon_rhs: ($) =>
+      // TODO: choice general `:` rhs, `:<c-u>` rhs or `<Plug>(...)` rhs
+      // alias(/<[Pp][Ll][Ug][Gg]>/, $.keycode)
       seq(
         alias($._first_command, $.command),
         repeat(seq($._pipe, $.command)),
-        $.keycode
+        $._cr
       ),
     _first_command: ($) => seq(":", optional($._range), /[^<|\\]+/),
     _range: () => "'<,'>",
 
     command: () => /[^<|\\]+/,
+    _cr: ($) => alias(/<[Cc][Rr]>/, $.keycode),
 
+    // TODO: accept alias(/<[Bb][Aa][Rr]>/, $.bar)
+    // add highlight (bar) @operator
     _pipe: () => choice("\\|", "|"),
 
     expression: ($) => $.printf,

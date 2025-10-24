@@ -21,5 +21,6 @@
 ========================
 :IncRename
 ---
-(ERROR
-  (command))
+(map_side
+  (command)
+  (MISSING keycode))
