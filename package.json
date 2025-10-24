@@ -73,7 +73,8 @@
       ],
       "files": [
         "grammar.js",
-        "test/corpus/*.test"
+        "test/corpus/*.test",
+        "test/highlight/*.vms"
       ]
     }
   }
