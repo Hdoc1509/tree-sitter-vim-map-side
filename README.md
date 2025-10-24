@@ -26,8 +26,8 @@ with `rhs` that starts with `:` ([not supported at the moment][ts-vim-map-colon]
 
 ## Parser requirements
 
-- [`lua`][ts-lua]: injection to arguments of `vim.keymap.set()` function for
-  `lhs` and `rhs`
+- [`lua`][ts-lua]: injection to `lsh` and `rhs` of [keymap
+  functions](#lua-parser) of neovim
 - [`printf`][ts-printf] (optional): injection to first argument of `printf()`
   expression.
 - [`vim`][ts-vim] (optional): injection to `rhs` when it starts with `:` and to
@@ -114,23 +114,34 @@ Where `X.X.X` is the version of the grammar.
 
 ### `lua` parser
 
-For `vim.keymap.set()` function of `neovim`:
+<!-- TODO: add queries for vim.api.nvim_buf_set_keymap() -->
+
+For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and functions of `neovim`:
 
 ```query
 ; NOTE: for lhs
 (function_call
   name: (dot_index_expression) @_fn
-  arguments: (arguments
-    .
-    (_) ; -- mode --
-    .
-    (string
-      (string_content) @injection.content))
-  (#eq? @_fn "vim.keymap.set")
+  arguments: [
+    (arguments
+      .
+      (_) ; -- mode --
+      .
+      (string
+        (string_content) @injection.content))
+    (arguments
+      .
+      (_) ; -- mode --
+      .
+      (_) ; -- lhs --
+      (string
+        (string_content) @injection.content))
+  ]
+  (#any-of? @_fn "vim.keymap.set" "vim.api.nvim_set_keymap")
   (#match? @injection.content "<.+>")
   (#set! injection.language "vim_map_side"))
 
-; NOTE: for general rhs
+; NOTE: for `:` rhs without <cr>
 (function_call
   name: (dot_index_expression) @_fn
   arguments: (arguments
@@ -141,22 +152,7 @@ For `vim.keymap.set()` function of `neovim`:
     .
     (string
       (string_content) @injection.content))
-  (#eq? @_fn "vim.keymap.set")
-  (#match? @injection.content "<.+>")
-  (#set! injection.language "vim_map_side"))
-
-; NOTE: for `:` rhs without keycode
-(function_call
-  name: (dot_index_expression) @_fn
-  arguments: (arguments
-    .
-    (_) ; -- mode --
-    .
-    (_) ; -- lhs --
-    .
-    (string
-      (string_content) @injection.content))
-  (#eq? @_fn "vim.keymap.set")
+  (#any-of? "vim.keymap.set" "vim.api.nvim_set_keymap")
   (#not-match? @injection.content "<.+>")
   (#match? @injection.content "^:")
   (#set! injection.language "vim_map_side"))
@@ -174,7 +170,7 @@ For `vim.keymap.set()` function of `neovim`:
       (string_content) @injection.content)
     .
     (table_constructor) @_options)
-  (#eq? @_fn "vim.keymap.set")
+  (#any-of? "vim.keymap.set" "vim.api.nvim_set_keymap")
   ; NOTE: to avoid double injection
   (#not-match? @injection.content "<.+>")
   (#match? @_options "expr\s*=\s*true")
