@@ -7,7 +7,10 @@
     ">"
   ] @punctuation.bracket)
 
-"|" @operator
+[
+  "|"
+  (bar)
+] @operator
 
 "\\|" @string.escape
 
