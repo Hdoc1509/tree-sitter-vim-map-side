@@ -104,6 +104,16 @@ keycode with ignored keys
   (command)
   (keycode))
 
+============
+: with <c-u>
+============
+:<C-U>normal! 0f(hviw<CR>
+---
+(map_side
+  (keycode)
+  (command)
+  (keycode))
+
 =====
 :.lua
 =====
