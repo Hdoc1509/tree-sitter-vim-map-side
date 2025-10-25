@@ -111,17 +111,17 @@ Where `X.X.X` is the version of the grammar.
 > [!NOTE]
 > If you are using Neovim, you can use `lua-match?` and `not-lua-match?`
 > predicates instead of `match?` and `not-match?`.
+> Be sure to use `%s` instead of `\s` in the regexes.
 
 ### `lua` parser
 
-<!-- TODO: add queries for vim.api.nvim_buf_set_keymap() -->
-
-For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and functions of `neovim`:
+For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and
+`vim.api.nvim_buf_set_keymap()` functions of `neovim`:
 
 ```query
-; NOTE: for lhs
+; NOTE: for lhs and rhs
 (function_call
-  name: (dot_index_expression) @_fn
+  name: (_) @_fn
   arguments: [
     (arguments
       .
@@ -141,9 +141,35 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and functions of `neovim`:
   (#match? @injection.content "<.+>")
   (#set! injection.language "vim_map_side"))
 
+(function_call
+  name: (_) @_fn
+  arguments: [
+    (arguments
+      .
+      (_) ; -- buffer --
+      .
+      (_) ; -- mode --
+      .
+      (string
+        (string_content) @injeciton.content))
+    (arguments
+      .
+      (_) ; -- buffer --
+      .
+      (_) ; -- mode --
+      .
+      (_) ; -- lhs --
+      .
+      (string
+        (string_content) @injeciton.content))
+  ]
+  (#eq? @_fn "vim.api.nvim_buf_set_keymap")
+  (#match? @injeciton.content "<.+>")
+  (#set! injection.language "vim_map_side"))
+
 ; NOTE: for `:` rhs without <cr>
 (function_call
-  name: (dot_index_expression) @_fn
+  name: (_) @_fn
   arguments: (arguments
     .
     (_) ; -- mode --
@@ -152,14 +178,31 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and functions of `neovim`:
     .
     (string
       (string_content) @injection.content))
-  (#any-of? "vim.keymap.set" "vim.api.nvim_set_keymap")
+  (#any-of? @_fn "vim.keymap.set" "vim.api.nvim_set_keymap")
+  (#not-match? @injection.content "<.+>")
+  (#match? @injection.content "^:")
+  (#set! injection.language "vim_map_side"))
+
+(function_call
+  name: (_) @_fn
+  arguments: (arguments
+    .
+    (_) ; -- buffer --
+    .
+    (_) ; -- mode --
+    .
+    (_) ; -- lhs --
+    .
+    (string
+      (string_content) @injection.content))
+  (#eq? @_fn "vim.api.nvim_buf_set_keymap")
   (#not-match? @injection.content "<.+>")
   (#match? @injection.content "^:")
   (#set! injection.language "vim_map_side"))
 
 ; NOTE: for expressions as rhs
 (function_call
-  name: (dot_index_expression) @_fn
+  name: (_) @_fn
   arguments: (arguments
     .
     (_) ; -- mode --
@@ -170,7 +213,27 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and functions of `neovim`:
       (string_content) @injection.content)
     .
     (table_constructor) @_options)
-  (#any-of? "vim.keymap.set" "vim.api.nvim_set_keymap")
+  (#any-of? @_fn "vim.keymap.set" "vim.api.nvim_set_keymap")
+  ; NOTE: to avoid double injection
+  (#not-match? @injection.content "<.+>")
+  (#match? @_options "expr\s*=\s*true")
+  (#set! injection.language "vim_map_side"))
+
+(function_call
+  name: (_) @_fn
+  arguments: (arguments
+    .
+    (_) ; -- buffer --
+    .
+    (_) ; -- mode --
+    .
+    (_) ; -- lhs --
+    .
+    (string
+      (string_content) @injection.content)
+    .
+    (table_constructor) @_options)
+  (#eq? @_fn "vim.api.nvim_buf_set_keymap")
   ; NOTE: to avoid double injection
   (#not-match? @injection.content "<.+>")
   (#match? @_options "expr\s*=\s*true")
