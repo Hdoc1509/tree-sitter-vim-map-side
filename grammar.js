@@ -48,10 +48,13 @@ module.exports = grammar({
       ),
 
     _colon_rhs: ($) =>
-      // TODO: choice general `:` rhs, `:<c-u>` rhs or `<Plug>(...)` rhs
+      // TODO: `<Plug>(...)` rhs
       // alias(/<[Pp][Ll][Ug][Gg]>/, $.keycode)
       seq(
-        alias($._first_command, $.command),
+        choice(
+          seq(":", alias(/<[Cc]-[Uu]>/, $.keycode), $.command),
+          alias($._first_command, $.command)
+        ),
         repeat(seq($._pipe, $.command)),
         $._cr
       ),

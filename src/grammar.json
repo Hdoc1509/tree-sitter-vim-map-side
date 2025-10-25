@@ -183,13 +183,40 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_first_command"
-          },
-          "named": true,
-          "value": "command"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ":"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "<[Cc]-[Uu]>"
+                  },
+                  "named": true,
+                  "value": "keycode"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "command"
+                }
+              ]
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_first_command"
+              },
+              "named": true,
+              "value": "command"
+            }
+          ]
         },
         {
           "type": "REPEAT",
