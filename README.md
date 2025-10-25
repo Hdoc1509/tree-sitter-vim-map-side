@@ -113,7 +113,7 @@ Each release has 2 tags:
 > [!NOTE]
 > If you are using Neovim, you can use `lua-match?` and `not-lua-match?`
 > predicates instead of `match?` and `not-match?`.
-> Be sure to use `%s` instead of `\s` in the regexes.
+> Be sure to use `%s` instead of `\s` and `%S` instead of `\S` in the regexes.
 
 ### `lua` parser
 
