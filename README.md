@@ -165,36 +165,6 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and
   (#match? @injeciton.content "<.+>")
   (#set! injection.language "vim_map_side"))
 
-; NOTE: for `:` rhs without <cr>
-(function_call
-  name: (_) @_fn
-  ; format-ignore
-  arguments: (arguments
-    . (_) ; -- mode --
-    . (_) ; -- lhs --
-    .
-    (string
-      (string_content) @injection.content))
-  (#any-of? @_fn "vim.keymap.set" "vim.api.nvim_set_keymap")
-  (#not-match? @injection.content "<.+>")
-  (#match? @injection.content "^:")
-  (#set! injection.language "vim_map_side"))
-
-(function_call
-  name: (_) @_fn
-  ; format-ignore
-  arguments: (arguments
-    . (_) ; -- buffer --
-    . (_) ; -- mode --
-    . (_) ; -- lhs --
-    .
-    (string
-      (string_content) @injection.content))
-  (#eq? @_fn "vim.api.nvim_buf_set_keymap")
-  (#not-match? @injection.content "<.+>")
-  (#match? @injection.content "^:")
-  (#set! injection.language "vim_map_side"))
-
 ; NOTE: for expressions as rhs
 (function_call
   name: (_) @_fn

@@ -15,12 +15,3 @@
 (map_side
   (keycode)
   (ERROR))
-
-========================
-: that ends without <cr>
-========================
-:IncRename
----
-(map_side
-  (command)
-  (MISSING keycode))
