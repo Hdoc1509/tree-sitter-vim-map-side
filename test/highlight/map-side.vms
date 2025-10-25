@@ -70,6 +70,16 @@
 "                                                        ^^^^ @character.special
 "                                                           ^ !@punctuation.bracket
 
+" === : with <c-u>
+:<C-U>normal! 0f(hviw<CR>
+" <- @punctuation.delimiter
+"^ !@punctuation.bracket
+"^^^^^ @character.special
+"    ^ !@punctuation.bracket
+"                    ^ !@punctuation.bracket
+"                    ^^^^ @character.special
+"                       ^ !@punctuation.bracket
+
 " === lua current line ===
 :.lua<cr>
 "    ^ !@punctuation.bracket
