@@ -139,7 +139,7 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and
         (string_content) @injection.content))
   ]
   (#any-of? @_fn "vim.keymap.set" "vim.api.nvim_set_keymap")
-  (#match? @injection.content "<.+>")
+  (#match? @injection.content "<\S+>")
   (#set! injection.language "vim_map_side"))
 
 (function_call
@@ -162,7 +162,7 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and
         (string_content) @injeciton.content))
   ]
   (#eq? @_fn "vim.api.nvim_buf_set_keymap")
-  (#match? @injeciton.content "<.+>")
+  (#match? @injeciton.content "<\S+>")
   (#set! injection.language "vim_map_side"))
 
 ; NOTE: for expressions as rhs
@@ -179,7 +179,7 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and
     (table_constructor) @_options)
   (#any-of? @_fn "vim.keymap.set" "vim.api.nvim_set_keymap")
   ; NOTE: to avoid double injection
-  (#not-match? @injection.content "<.+>")
+  (#not-match? @injection.content "<\S+>")
   (#match? @_options "expr\s*=\s*true")
   (#set! injection.language "vim_map_side"))
 
@@ -197,7 +197,7 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and
     (table_constructor) @_options)
   (#eq? @_fn "vim.api.nvim_buf_set_keymap")
   ; NOTE: to avoid double injection
-  (#not-match? @injection.content "<.+>")
+  (#not-match? @injection.content "<\S+>")
   (#match? @_options "expr\s*=\s*true")
   (#set! injection.language "vim_map_side"))
 ```
