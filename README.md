@@ -104,7 +104,9 @@ Each release has 2 tags:
 2. `deploy-vX.X.X` for the `release` branch. It only includes files needed for
    `tree-sitter`
 
-Where `X.X.X` is the version of the grammar.
+> [!NOTE]
+> `X.X.X` is a placeholder for the version of the grammar. Don't use it as a
+> value
 
 ## Injections
 
