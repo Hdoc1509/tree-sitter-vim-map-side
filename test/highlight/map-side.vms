@@ -38,6 +38,7 @@
 " <- !@punctuation.bracket
 "^^^^ @character.special
 "   ^ !@punctuation.bracket
+"           ^ @operator
 "                ^ !@punctuation.bracket
 "                ^^^^ @character.special
 "                   ^ !@punctuation.bracket
