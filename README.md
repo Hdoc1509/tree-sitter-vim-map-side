@@ -22,7 +22,7 @@ with `rhs` that starts with `:` ([not supported at the moment][ts-vim-map-colon]
 - `variable-scope`: `g:`, `l:`, `v:`
 
 > [!NOTE]
-> More expressions will be supported in the future.
+> More expressions will be supported in the future if requested.
 
 ## Parser requirements
 
