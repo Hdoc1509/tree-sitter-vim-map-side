@@ -123,17 +123,16 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and
 (function_call
   name: (_) @_fn
   arguments: [
+    ; format-ignore
     (arguments
-      .
-      (_) ; -- mode --
+      . (_) ; -- mode --
       .
       (string
         (string_content) @injection.content))
+    ; format-ignore
     (arguments
-      .
-      (_) ; -- mode --
-      .
-      (_) ; -- lhs --
+      . (_) ; -- mode --
+      . (_) ; -- lhs --
       (string
         (string_content) @injection.content))
   ]
@@ -144,21 +143,18 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and
 (function_call
   name: (_) @_fn
   arguments: [
+    ; format-ignore
     (arguments
-      .
-      (_) ; -- buffer --
-      .
-      (_) ; -- mode --
+      . (_) ; -- buffer --
+      . (_) ; -- mode --
       .
       (string
         (string_content) @injeciton.content))
+    ; format-ignore
     (arguments
-      .
-      (_) ; -- buffer --
-      .
-      (_) ; -- mode --
-      .
-      (_) ; -- lhs --
+      . (_) ; -- buffer --
+      . (_) ; -- mode --
+      . (_) ; -- lhs --
       .
       (string
         (string_content) @injeciton.content))
@@ -170,11 +166,10 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and
 ; NOTE: for `:` rhs without <cr>
 (function_call
   name: (_) @_fn
+  ; format-ignore
   arguments: (arguments
-    .
-    (_) ; -- mode --
-    .
-    (_) ; -- lhs --
+    . (_) ; -- mode --
+    . (_) ; -- lhs --
     .
     (string
       (string_content) @injection.content))
@@ -185,13 +180,11 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and
 
 (function_call
   name: (_) @_fn
+  ; format-ignore
   arguments: (arguments
-    .
-    (_) ; -- buffer --
-    .
-    (_) ; -- mode --
-    .
-    (_) ; -- lhs --
+    . (_) ; -- buffer --
+    . (_) ; -- mode --
+    . (_) ; -- lhs --
     .
     (string
       (string_content) @injection.content))
@@ -203,11 +196,10 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and
 ; NOTE: for expressions as rhs
 (function_call
   name: (_) @_fn
+  ; format-ignore
   arguments: (arguments
-    .
-    (_) ; -- mode --
-    .
-    (_) ; -- lhs --
+    . (_) ; -- mode --
+    . (_) ; -- lhs --
     .
     (string
       (string_content) @injection.content)
@@ -221,13 +213,11 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and
 
 (function_call
   name: (_) @_fn
+  ; format-ignore
   arguments: (arguments
-    .
-    (_) ; -- buffer --
-    .
-    (_) ; -- mode --
-    .
-    (_) ; -- lhs --
+    . (_) ; -- buffer --
+    . (_) ; -- mode --
+    . (_) ; -- lhs --
     .
     (string
       (string_content) @injection.content)
