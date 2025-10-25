@@ -34,6 +34,10 @@
       "required": false,
       "types": [
         {
+          "type": "bar",
+          "named": true
+        },
+        {
           "type": "command",
           "named": true
         },
@@ -136,6 +140,10 @@
   {
     "type": "\\|",
     "named": false
+  },
+  {
+    "type": "bar",
+    "named": true
   },
   {
     "type": "comment",

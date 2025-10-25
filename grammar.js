@@ -61,9 +61,8 @@ module.exports = grammar({
     command: () => /[^<|\\]+/,
     _cr: ($) => alias(/<[Cc][Rr]>/, $.keycode),
 
-    // TODO: accept alias(/<[Bb][Aa][Rr]>/, $.bar)
     // add highlight (bar) @operator
-    _pipe: () => choice("\\|", "|"),
+    _pipe: ($) => choice("\\|", "|", alias(/<[Bb][Aa][Rr]>/, $.bar)),
 
     expression: ($) => $.printf,
 
