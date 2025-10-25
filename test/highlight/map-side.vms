@@ -18,6 +18,20 @@
 "                                         ^^^^ @character.special
 "                                            ^ !@punctuation.bracket
 
+" === <cmd> with <bar> ===
+<cmd>call CustomFunction() <bar> OtherCommand<CR>
+" <- @character.special
+" <- !@punctuation.bracket
+"^^^^ @character.special
+"   ^ !@punctuation.bracket
+"                          ^ !@punctuation.bracket
+"                          ^^^^^ @operator
+"                              ^ !@punctuation.bracket
+"                                            ^ !@punctuation.bracket
+"                                            ^^^^ @character.special
+"                                               ^ !@punctuation.bracket
+
+
 " === <cmd> with pipe in lua string ===
 <cmd>tabnew | Git<cr><c-w>o
 " <- @character.special
