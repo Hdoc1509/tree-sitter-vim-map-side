@@ -48,8 +48,6 @@ module.exports = grammar({
       ),
 
     _colon_rhs: ($) =>
-      // TODO: `<Plug>(...)` rhs
-      // alias(/<[Pp][Ll][Ug][Gg]>/, $.keycode)
       seq(
         choice(
           seq(":", alias(/<[Cc]-[Uu]>/, $.keycode), $.command),
