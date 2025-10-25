@@ -7,6 +7,11 @@
     ">"
   ] @punctuation.bracket)
 
+; ":<c-u>" rhs
+(":" @punctuation.delimiter
+  .
+  (keycode))
+
 [
   "|"
   (bar)
