@@ -37,53 +37,8 @@ with `rhs` that starts with `:` ([not supported at the moment][ts-vim-map-colon]
 
 ### Neovim
 
-#### Requirements
-
-- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- [Node.js](https://nodejs.org/en/download/) (if ABI not compatible)
-- [tree-sitter cli](https://github.com/tree-sitter/tree-sitter/tree/master/crates/cli)
-  (if ABI not compatible)
-
-#### Installation
-
-1. Add the following to your `nvim-treesitter` configuration:
-
-   ```lua
-   local parser_config = require ("nvim-treesitter.parsers").get_parser_configs()
-
-   -- NOTE: add the parser to `parser_config` before calling `.setup()`
-   parser_config.vim_map_side = {
-     install_info = {
-       url = 'https://github.com/Hdoc1509/tree-sitter-vim-map-side',
-       files = { 'src/parser.c' },
-       -- can also use 'deploy-vX.X.X' for specific version or full commit hash
-       revision = 'release', -- latest released version
-       -- if ABI version from neovim doesn't match the one from this grammar
-       -- requires Node.js and tree-sitter cli to be installed
-       requires_generate_from_grammar = true,
-     },
-   }
-
-   require('nvim-treesitter.configs').setup({
-     ensure_installed = {
-       -- other parsers
-       'lua', -- required
-       'printf', -- optional
-       'vim', -- optional
-       'vim_map_side', -- this parser
-     },
-     -- other options
-   })
-   ```
-
-2. Copy the queries from [`queries`](./queries) directory to
-   `queries/vim_map_side` directory in your `neovim` configuration directory:
-
-   | With                  | Path                    |
-   | --------------------- | ----------------------- |
-   | Unix                  | `~/.config/nvim`        |
-   | Windows               | `~/AppData/Local/nvim`  |
-   | `XDG_CONFIG_HOME` set | `$XDG_CONFIG_HOME/nvim` |
+- [vim-map-side.nvim](https://github.com/Hdoc1509/vim-map-side.nvim): plugin
+  that integrates this grammar to your `Neovim` configuration.
 
 ### Helix
 
