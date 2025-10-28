@@ -48,21 +48,6 @@ WIP
 
 WIP
 
-### In General
-
-You can get the built files from the [`release` branch][release-branch]. If you
-have specific instructions for your editor, PR's are welcome.
-
-Each release has 2 tags:
-
-1. `vX.X.X` for the `master` branch. It includes all repo's files
-2. `deploy-vX.X.X` for the `release` branch. It only includes files needed for
-   `tree-sitter`
-
-> [!NOTE]
-> `X.X.X` is a placeholder for the version of the grammar. Don't use it as a
-> value
-
 ## Injections
 
 > [!NOTE]

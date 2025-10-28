@@ -27,45 +27,11 @@ jobs:
     secrets:
       PYPI_API_TOKEN: ${{secrets.PYPI_API_TOKEN}}
 
-  gh-pages:
-    runs-on: ubuntu-22.04
+  github:
     if: github.repository == 'Hdoc1509/tree-sitter-gh-actions-expressions'
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v5.0.0
-
-      - name: Prepare files to publish
-        run: |
-          mkdir release
-          cp --recursive binding.gyp bindings Cargo.toml CMakeLists.txt go.mod \
-            grammar.js LICENSE Makefile package.json Package.swift \
-            pyproject.toml queries setup.py src tree-sitter.json \
-            release
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4.0.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./release
-          publish_branch: release
-          commit_message: Deploy ${{ github.ref_name }}
-          tag_name: deploy-${{ github.ref_name }}
-          tag_message: Deployment ${{ github.ref_name }}
-
-  gh-release:
-    permissions:
-      contents: write
-    if: github.repository == 'Hdoc1509/tree-sitter-gh-actions-expressions'
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v5.0.0
-
-      - name: Create release
-        id: release_tag
-        uses: softprops/action-gh-release@v2.3.3
-        with:
-          tag_name: ${{ github.ref_name }}
-          body: |
-            Please refer to [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md) for details.
-          token: ${{ secrets.GITHUB_TOKEN }}
+    uses: tree-sitter/workflows/.github/workflows/release.yml@main
+    with:
+      generate: true
+      attestations: true
+      release-body: |
+        Please refer to [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md) for details.
