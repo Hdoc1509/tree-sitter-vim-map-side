@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-vim-map-side",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Vim's map side (lhs and rhs) grammar for tree-sitter",
   "repository": "https://github.com/hdoc1509/tree-sitter-vim-map-side",
   "license": "MIT",

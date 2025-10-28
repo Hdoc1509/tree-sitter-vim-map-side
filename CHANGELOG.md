@@ -1,5 +1,11 @@
 # tree-sitter-vim-map-side
 
+## 0.1.3
+
+### Patch Changes
+
+- Check correct repo in publish workflow ([`78f90f0`](https://github.com/Hdoc1509/tree-sitter-vim-map-side/commit/78f90f02ed74449ea4ab9078464495f2a6207274))
+
 ## 0.1.2
 
 ### Patch Changes
