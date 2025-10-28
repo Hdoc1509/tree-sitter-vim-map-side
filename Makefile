@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-vim-map-side
 HOMEPAGE_URL := https://github.com/hdoc1509/tree-sitter-vim-map-side
-VERSION := 0.1.0
+VERSION := 0.1.1
 
 # repository
 SRC_DIR := src

@@ -1,5 +1,11 @@
 # tree-sitter-vim-map-side
 
+## 0.1.1
+
+### Patch Changes
+
+- Add required permission in publish workflow ([`3f36d3e`](https://github.com/Hdoc1509/tree-sitter-vim-map-side/commit/3f36d3ea76f51031797b420c840e3eb708cad0ee))
+
 ## 0.1.0
 
 ### Initial release
