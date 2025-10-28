@@ -29,6 +29,10 @@ jobs:
 
   github:
     if: github.repository == 'Hdoc1509/tree-sitter-gh-actions-expressions'
+    permissions:
+      attestations: write
+      contents: write
+      id-token: write
     uses: tree-sitter/workflows/.github/workflows/release.yml@main
     with:
       generate: true
