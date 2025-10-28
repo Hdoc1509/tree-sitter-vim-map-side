@@ -1,5 +1,11 @@
 # tree-sitter-vim-map-side
 
+## 0.1.2
+
+### Patch Changes
+
+- Remove concurrency for publish workflow ([`3da6405`](https://github.com/Hdoc1509/tree-sitter-vim-map-side/commit/3da6405f77d2b860bc6149cbb87cdbb5bb5adf93))
+
 ## 0.1.1
 
 ### Patch Changes
