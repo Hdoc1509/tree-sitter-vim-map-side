@@ -30,7 +30,7 @@ with `rhs` that starts with `:` ([not supported at the moment][ts-vim-map-colon]
   functions](#lua-parser) of neovim
 - [`printf`][ts-printf] (optional): injection to first argument of `printf()`
   expression.
-- [`vim`][ts-vim] (optional): injection to `rhs` when it starts with `:` and to
+- [`vim`][ts-vim]: injection to `rhs` when it starts with `:` and to
   `command` nodes of this grammar.
 
 ## Usage in Editors
