@@ -166,4 +166,3 @@ For `vim.keymap.set()`, `vim.api.nvim_set_keymap()` and
 [ts-lua]: https://github.com/tree-sitter-grammars/tree-sitter-lua
 [ts-printf]: https://github.com/tree-sitter-grammars/tree-sitter-printf
 [ts-vim]: https://github.com/tree-sitter-grammars/tree-sitter-vim
-[release-branch]: https://github.com/Hdoc1509/tree-sitter-vim-map-side/tree/release
